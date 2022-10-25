@@ -62,7 +62,7 @@ func (s *store) Read(pos uint64) ([]byte, error) {
 		return nil, err
 	}
 	b := make([]byte, enc.Uint64(size))
-	if _, err := s.File.ReadAt(b, int64(pos)); err != nil {
+	if _, err := s.File.ReadAt(b, int64(pos+lenWidth)); err != nil {
 		return nil, err
 	}
 	return b, nil
